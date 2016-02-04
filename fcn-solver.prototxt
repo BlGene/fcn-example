@@ -1,0 +1,24 @@
+net: "fcn-voc-32s-train.prototxt"
+# This net is run with a batch_size 1
+#                        iter_size 20
+# test set has size test_size: 360 (padded)
+# train set has size train_size 11700 (padded)
+
+#test_iter should be: test_size / (batch_size * iter_size )
+test_iter: 18
+# make test net, but don't invoke it from the solver itself
+test_interval: 500
+display: 20
+#average_loss: 20
+lr_policy: "fixed"
+# lr for normalized softmax -- see net definition
+base_lr: 1e-4
+# high momentum
+momentum: 0.90
+# gradient accumulation
+iter_size: 20
+max_iter: 80000
+weight_decay: 0.0005
+snapshot: 10000
+snapshot_prefix: "train"
+#test_initialization: false
